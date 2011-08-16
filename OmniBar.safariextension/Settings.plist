@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>DefaultValue</key>
+		<string>http://yandex.ru/yandsearch?text=${query}&amp;from=${extensionId}</string>
+		<key>Key</key>
+		<string>searchPattern</string>
+		<key>Title</key>
+		<string>Search by</string>
+		<key>Titles</key>
+		<array>
+			<string>Яндекс</string>
+			<string>Google</string>
+			<string>Yahoo!</string>
+			<string>Bing</string>
+		</array>
+		<key>Type</key>
+		<string>ListBox</string>
+		<key>Values</key>
+		<array>
+			<string>http://yandex.ru/yandsearch?text=${query}&amp;from=${extensionId}</string>
+			<string>http://google.com/search?client=safari&amp;q=${query}&amp;ie=UTF-8&amp;oe=UTF-8&amp;from=${extensionId}</string>
+			<string>http://search.yahoo.com/search?ei=utf-8&amp;p=${query}&amp;fr=${extensionId}</string>
+			<string>http://www.bing.com/search?q=${query}&amp;from=${extensionId}</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Key</key>
+		<string>excludes</string>
+		<key>Title</key>
+		<string>Excludes</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+</array>
+</plist>
