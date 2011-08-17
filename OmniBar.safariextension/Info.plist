@@ -41,7 +41,7 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string></string>
+	<string>https://raw.github.com/aefimov/omnibar/master/OmniBar.safariextension/Update.plist</string>
 	<key>Website</key>
 	<string>https://github.com/aefimov/omnibar</string>
 </dict>
