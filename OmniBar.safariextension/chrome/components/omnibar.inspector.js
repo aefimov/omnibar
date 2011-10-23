@@ -22,7 +22,8 @@ Omnibar.Inspector = new function () {
     // Those rules detect URLs
     this.excludeRules = function (text) {
         return text.match(/^[a-z]+$/) || // This is short domain name in lowercase, do not search it
-                text.match(/:\d+$/) || // This is domain name with port specified, do not search it
+                text.match(/^[^\s]+:\d+$/) || // This is domain name with port specified, do not search it
+                text.match(/\d+\.\d+\.\d+\.\d+(?::\d+)?$/) || // This is IP address, do not search it
                 text.match(/^[^:]+:[^@]+@/) || // This is username and password specified in url, do not search it
                 text.match(/\.[^\s\d\.,<>!@~`#\$%\^&\*\(\)\-_\+=\{\}\[\]\|\\\/;:"']{2,}$/); // This is valid domain suffix, do not search it
     };
@@ -33,7 +34,7 @@ Omnibar.Inspector = new function () {
     };
 
     this.isSimpleText = function (text) {
-        return text != null && (!this.excludeRules(text) || this.includeRules(text));
+        return text != null && (this.includeRules(text) || !this.excludeRules(text));
     };
 
     this.applyForSimpleText = function(url, successHandler) {
@@ -45,3 +46,4 @@ Omnibar.Inspector = new function () {
         }
     };
 }();
+
