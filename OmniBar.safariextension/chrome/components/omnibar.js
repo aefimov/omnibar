@@ -24,7 +24,7 @@ Omnibar = new function () {
             httpsAvailable: true
         },
         "yahoo": {
-            shortcuts: ["y", "ya", "y!", "!"],
+            shortcuts: ["!", "y", "y!", "ya"],
             searchPattern: "search.yahoo.com/search?ei=utf-8&p=${query}&fr=${extensionId}",
             httpsAvailable: false
         },
@@ -39,7 +39,7 @@ Omnibar = new function () {
             httpsAvailable: true
         },
         "wolframalpha": {
-            shortcuts: ["w", "wa"],
+            shortcuts: ["wa"],
             searchPattern: "wolframalpha.com/input/?i=${query}&from=${extensionId}",
             httpsAvailable: false
         },
@@ -47,19 +47,37 @@ Omnibar = new function () {
             shortcuts: ["f", "fb"],
             searchPattern: "facebook.com/search.php?q=${query}&from=${extensionId}",
             httpsAvailable: true
+        },
+        "wikipedia": {
+            shortcuts: ["w", "wp", "wi"],
+            searchPattern: "wikipedia.org/wiki/Special:Search/${query}?from=${extensionId}",
+            httpsAvailable: true
         }
     };
 
+    this.splitText = function(text) {
+        var matches = text.match(/^(?:([^\s]{1,2})\s)?\s*(.*)$/);
+        return matches && matches.length === 3 ? {
+            prefix: matches[1],
+            suffix: matches[2]
+        } : {
+            suffix: text
+        };
+    };
+
     this.toSearchUrl = function (text) {
+        var request = this.splitText(text);
         var searchEngine = Omnibar.Settings.getSearchEngine();
-        var prefix = text.replace(/^(\w{1,2})\s.*$/, "$1").trim();
-        if (prefix.length > 0) {
+        if (request.prefix) {
             // Try to find shortcut
-            var engine = Omnibar.Settings.findAlternateSearchEngine(prefix.toLocaleLowerCase(), searchEngine);
-            if (engine && engine != null) {
-                searchEngine = engine;
-                // Remove prefix from text, cos we found alternative search engine
-                text = text.replace(/^\w{1,2}\s+(.*)$/, "$1").trim();
+            if (request.prefix === '?') {
+                text = request.suffix;
+            } else {
+                var engine = Omnibar.Settings.findAlternateSearchEngine(request.prefix.toLocaleLowerCase(), searchEngine);
+                if (engine && engine != null) {
+                    searchEngine = engine;
+                    text = request.suffix;
+                }
             }
         }
         return Omnibar.Settings.getSearchPattern(searchEngine)

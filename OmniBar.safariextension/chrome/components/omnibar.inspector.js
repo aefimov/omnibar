@@ -7,7 +7,7 @@
  */
 Omnibar.Inspector = new function () {
     this.decodeUrlToText = function (url) {
-        var urlRe = /^http:\/\/([^\/]+)\/?$/i;
+        var urlRe = /^http:\/\/?([^\/]+)\/?$/i;
         if (url != null && url.match(urlRe)) {
             // Cut 'http://' prefix and tailing '/' if exists
             var matchedUrl = url.replace(urlRe, "$1");

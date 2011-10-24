@@ -19,6 +19,7 @@
 			<string>DuckDuckGo</string>
 			<string>WolframAlpha</string>
 			<string>Facebook</string>
+			<string>Wikipedia</string>
 		</array>
 		<key>Type</key>
 		<string>ListBox</string>
@@ -32,6 +33,7 @@
 			<string>duckduckgo</string>
 			<string>wolframalpha</string>
 			<string>facebook</string>
+			<string>wikipedia</string>
 		</array>
 	</dict>
 	<dict>
