@@ -24,7 +24,7 @@ Omnibar = new function () {
             httpsAvailable: true
         },
         "yahoo": {
-            shortcuts: ["!", "y", "y!", "ya"],
+            shortcuts: ["!", "y!"],
             searchPattern: "search.yahoo.com/search?ei=utf-8&p=${query}&fr=${extensionId}",
             httpsAvailable: false
         },
