@@ -4,35 +4,45 @@
 <array>
 	<dict>
 		<key>DefaultValue</key>
-		<string>http://yandex.ru/yandsearch?text=${query}&amp;from=${extensionId}</string>
+		<string>yandex.ru</string>
 		<key>Key</key>
-		<string>searchPattern</string>
+		<string>searchEngineId</string>
 		<key>Title</key>
-		<string>Search by</string>
+		<string>Default Search Engine</string>
 		<key>Titles</key>
 		<array>
 			<string>Яндекс</string>
+			<string>Yandex</string>
 			<string>Google</string>
 			<string>Yahoo!</string>
 			<string>Bing</string>
+			<string>DuckDuckGo</string>
+			<string>WolframAlpha</string>
+			<string>Facebook</string>
 		</array>
 		<key>Type</key>
 		<string>ListBox</string>
 		<key>Values</key>
 		<array>
-			<string>http://yandex.ru/yandsearch?text=${query}&amp;from=${extensionId}</string>
-			<string>http://google.com/search?client=safari&amp;q=${query}&amp;ie=UTF-8&amp;oe=UTF-8&amp;from=${extensionId}</string>
-			<string>http://search.yahoo.com/search?ei=utf-8&amp;p=${query}&amp;fr=${extensionId}</string>
-			<string>http://www.bing.com/search?q=${query}&amp;from=${extensionId}</string>
+			<string>yandex.ru</string>
+			<string>yandex.com</string>
+			<string>google</string>
+			<string>yahoo</string>
+			<string>bing</string>
+			<string>duckduckgo</string>
+			<string>wolframalpha</string>
+			<string>facebook</string>
 		</array>
 	</dict>
 	<dict>
+		<key>DefaultValue</key>
+		<false/>
 		<key>Key</key>
-		<string>excludes</string>
+		<string>useHttps</string>
 		<key>Title</key>
-		<string>Excludes</string>
+		<string>Use HTTPS if supported by Search Engine</string>
 		<key>Type</key>
-		<string>TextField</string>
+		<string>CheckBox</string>
 	</dict>
 </array>
 </plist>
