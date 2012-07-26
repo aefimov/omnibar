@@ -26,7 +26,7 @@ If you using shortcut, then OmniBar will think what you not needed to use your d
 _Default Search Engine_ and will search for shortcut in all other.
 
 ##Installation
-Simple open this link in Safari and follow up the instructions: [OmniBar.safariextz](https://github.com/downloads/aefimov/omnibar/OmniBar.safariextz)
+Download [OmniBar.safariextz](https://github.com/downloads/aefimov/omnibar/OmniBar.safariextz) and then open it with Safari.
 
 ##Safari 6.x
 Since Safari 6 have omnibar on board, this extension maybe obsolete and you can remove it
