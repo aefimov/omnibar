@@ -25,6 +25,9 @@ and Safari open Wikipedia page about one greatest writer from Marseille.
 If you using shortcut, then OmniBar will think what you not needed to use your default engine, so, it will exclude
 _Default Search Engine_ and will search for shortcut in all other.
 
+##Installation
+Simple open this link in Safari and follow up the instructions: [OmniBar.safariextz](https://github.com/downloads/aefimov/omnibar/OmniBar.safariextz)
+
 ##Safari 6.x
 Since Safari 6 have omnibar on board, this extension maybe obsolete and you can remove it
 (especially you not need custom Search Engines). But it still can be used if you requires
