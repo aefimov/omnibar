@@ -37,7 +37,7 @@ Omnibar.Inspector = new function () {
         return text != null && (this.includeRules(text) || !this.excludeRules(text));
     };
 
-    this.applyForSimpleText = function(url, successHandler) {
+    this.decodeSearchQueryFromUrl = function(url, successHandler) {
         if (url && successHandler) {
             var text = this.decodeUrlToText(url);
             if (this.isSimpleText(text)) {

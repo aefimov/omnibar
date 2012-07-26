@@ -1,3 +1,17 @@
+var SafariVersion = {
+    init: function () {
+        this.version = this.searchVersion(navigator.userAgent)
+                || this.searchVersion(navigator.appVersion)
+                || 5.0;
+    },
+    searchVersion: function (s) {
+        var index = s.indexOf("Version");
+        if (index == -1) return;
+        return parseFloat(s.substring(index + 8));
+    }
+};
+SafariVersion.init();
+
 /**
  * Extension entry point.
  *
@@ -85,12 +99,23 @@ Omnibar = new function () {
                 .replace("${extensionId}", Omnibar.Settings.getExtensionId());
     };
 
-    safari.application.addEventListener("beforeNavigate", function (event) {
-        Omnibar.Inspector.applyForSimpleText(event.url, function(text) {
-            safari.application.activeBrowserWindow.activeTab.url = Omnibar.toSearchUrl(text);
-            event.preventDefault();
-        });
-    }, false);
+    if (SafariVersion.version < 6.0) {
+        // Safari 5.x has not omnibar, we need to parse entered url
+        safari.application.addEventListener("beforeNavigate", function (event) {
+            Omnibar.Inspector.decodeSearchQueryFromUrl(event.url, function(text) {
+                safari.application.activeBrowserWindow.activeTab.url = Omnibar.toSearchUrl(text);
+                event.preventDefault();
+            });
+        }, false);
+    } else {
+        // Safari 6.x has omnibar itself, and event 'beforeSearch'
+        safari.application.addEventListener("beforeSearch", function (event) {
+            if (event.query) {
+                safari.application.activeBrowserWindow.activeTab.url = Omnibar.toSearchUrl(event.query);
+                event.preventDefault();
+            }
+        }, false);
+    }
 }();
 
 Omnibar.Settings = new function() {
